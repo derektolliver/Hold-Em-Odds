@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class WindowState extends JPanel {
 
@@ -91,16 +92,32 @@ public class WindowState extends JPanel {
      */
     private void optionState() {
         // TODO Buttons may or may not be changed
+        //
         JButton colorChange = new JButton("Change Color");
         JButton changeCard = new JButton("Change Cards");
         JButton mainMenu = new JButton("Return to Main Menu");
+
+        // Set the alignment
+        colorChange.setAlignmentX(Component.CENTER_ALIGNMENT);
+        changeCard.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // Add labels/buttons to panel
         add(colorChange);
         add(changeCard);
         add(mainMenu);
     }
 
-    private static void addButton(String text, Container container) {
-        // TODO maybe??? probably not actually
+    /**
+     * Adds a list of buttons to the panel and aligns them. (May or may not be used)
+     * @param buttonList list of buttons being added to panel
+     */
+    private void addButton(ArrayList<JButton> buttonList) {
+        // Set alignment and add to panel
+        for (JButton button : buttonList) {
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(button);
+        }
     }
 
 }
