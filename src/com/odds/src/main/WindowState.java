@@ -28,23 +28,44 @@ public class WindowState extends JPanel {
      */
     public void changeState(STATE state) {
         this.state = state;
-        paintComponent(getGraphics());
+        //paintComponent(getGraphics());
+        repaint();
     }
 
     /**
      * Creates new window based on changed state
      * @param g is the Graphics component used to create display
+     * May or may not keep the switch statement instead of if
      */
     public void paintComponent(Graphics g) {
         // TODO figure out if there is a problem with this being called twice?
-        if (state == STATE.MENU) {
-            System.out.println("buttons are being added");
-            mainState();
-        } else if (state == STATE.OPTIONS) {
-            System.out.println("OH YEAH BABY");
-            optionState();
-        } else {
-            //TODO
+        //repaint();
+//        if (state == STATE.MENU) {
+//            System.out.println("buttons are being added");
+//            mainState();
+//        } else if (state == STATE.OPTIONS) {
+//            System.out.println("OH YEAH BABY");
+//            optionState();
+//        } else {
+//            //TODO
+//        }
+        //super.paintComponent(g); //TODO FIX THIS NOW
+        switch (state) {
+            case MENU:
+                state = STATE.MENU;
+                mainState();
+                System.out.println("Menu state reached");
+                break;
+            case OPTIONS:
+                state = STATE.OPTIONS;
+                optionState();
+                System.out.println("Options state reached");
+                break;
+            case CALC:
+                state = STATE.CALC;
+                calcState();
+                System.out.println("Calc state reached");
+                break;
         }
     }
 
@@ -92,7 +113,7 @@ public class WindowState extends JPanel {
      */
     private void optionState() {
         // TODO Buttons may or may not be changed
-        //
+        // Create each button for the option state
         JButton colorChange = new JButton("Change Color");
         JButton changeCard = new JButton("Change Cards");
         JButton mainMenu = new JButton("Return to Main Menu");
@@ -106,6 +127,10 @@ public class WindowState extends JPanel {
         add(colorChange);
         add(changeCard);
         add(mainMenu);
+    }
+
+    private void calcState() {
+        // TODO not sure what's going here yet
     }
 
     /**
