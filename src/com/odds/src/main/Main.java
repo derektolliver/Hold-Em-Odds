@@ -36,6 +36,7 @@ public class Main {
 
         // Create panel
         WindowState main = new WindowState(); // starts at menu after paintComponent is called
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
         // Create frame
         JFrame frame = new JFrame(TITLE);
@@ -46,7 +47,6 @@ public class Main {
         frame.setLocationRelativeTo(null);
         //frame.getContentPane().add(calc);
         //frame.getContentPane().add(options);
-        //frame.pack();
         frame.setVisible(true);
         main.setVisible(true);
     }
