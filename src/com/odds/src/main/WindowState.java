@@ -28,8 +28,9 @@ public class WindowState extends JPanel {
      */
     public void changeState(STATE state) {
         this.state = state;
-        //paintComponent(getGraphics());
+        removeAll();
         repaint();
+        //paintComponent(getGraphics());
     }
 
     /**
