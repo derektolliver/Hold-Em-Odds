@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class WindowState extends JPanel {
 
     private STATE state;
+    private JPanel currPane;
 
     public WindowState() {
         state = STATE.MENU;
@@ -20,6 +21,7 @@ public class WindowState extends JPanel {
 
     public WindowState(STATE state) {
         this.state = state;
+        paintComponent(getGraphics());
     }
 
     /**
@@ -28,9 +30,9 @@ public class WindowState extends JPanel {
      */
     public void changeState(STATE state) {
         this.state = state;
-        removeAll();
-        repaint();
-        //paintComponent(getGraphics());
+//        removeAll();
+//        repaint();
+//        paintComponent(getGraphics());
     }
 
     /**

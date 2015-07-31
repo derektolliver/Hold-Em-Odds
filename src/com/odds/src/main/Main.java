@@ -1,6 +1,7 @@
 package com.odds.src.main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -11,6 +12,7 @@ public class Main {
     public static final int HEIGHT = WIDTH / 12 * 9;
 
     private static Menu menu;
+    private static CardLayout cards;
 
     private static STATE state = STATE.MENU;
 
@@ -51,8 +53,29 @@ public class Main {
         main.setVisible(true);
     }
 
-//    private static void init() { wtf was this code supposed to even do
-//        menu = new Menu();
-//    }
+    /**
+     * Creates the panels and adds them to the CardLayout
+     */
+    private static void init() {
+        // Create panels for CardLayout
+        JPanel menu = new JPanel();
+        JPanel options = new JPanel();
+        JPanel run = new JPanel();
+
+        // Create CardLayout and add panels to it
+        cards = new CardLayout();
+        cards.addLayoutComponent(menu, "menu");
+        cards.addLayoutComponent(options, "options");
+        cards.addLayoutComponent(run , "run");
+    }
+
+    /**
+     * Shows the specified panel on the frame
+     * @param panel - the panel requested to be shown
+     * @param name - name given to the specific panel
+     */
+    private static void show(Container panel, String name) {
+        cards.show(panel, name);
+    }
 
 }
