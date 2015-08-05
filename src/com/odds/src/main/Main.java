@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -13,6 +14,7 @@ public class Main {
 
     private static Menu menu;
     private static CardLayout cards;
+    private static ArrayList<JPanel> panels;
 
     private static STATE state = STATE.MENU;
 
@@ -57,10 +59,21 @@ public class Main {
      * Creates the panels and adds them to the CardLayout
      */
     private static void init() {
-        // Create panels for CardLayout
+        // Create list for panels
+        panels = new ArrayList<JPanel>();
+
+        // Create panels for CardLayout and add them to list
         JPanel menu = new JPanel();
         JPanel options = new JPanel();
         JPanel run = new JPanel();
+        panels.add(menu);
+        panels.add(options);
+        panels.add(run);
+
+        // Add the necessary objects to panels
+        for (JPanel panel : panels) {
+            addComponents(panel);
+        }
 
         // Create CardLayout and add panels to it
         cards = new CardLayout();
@@ -76,6 +89,12 @@ public class Main {
      */
     private static void show(Container panel, String name) {
         cards.show(panel, name);
+    }
+
+    private static void addComponents(JPanel panel) {
+//        switch (panel) {
+//          TODO finish this
+//        }
     }
 
 }
