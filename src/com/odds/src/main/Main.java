@@ -14,7 +14,7 @@ public class Main {
 
     private static Menu menu;
     private static CardLayout cards;
-    private static ArrayList<JPanel> panels;
+    private static ArrayList<WindowState> panels;
 
     private static STATE state = STATE.MENU;
 
@@ -49,8 +49,6 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        //frame.getContentPane().add(calc);
-        //frame.getContentPane().add(options);
         frame.setVisible(true);
         main.setVisible(true);
     }
@@ -60,26 +58,26 @@ public class Main {
      */
     private static void init() {
         // Create list for panels
-        panels = new ArrayList<JPanel>();
+        panels = new ArrayList<WindowState>();
 
         // Create panels for CardLayout and add them to list
-        JPanel menu = new JPanel();
-        JPanel options = new JPanel();
-        JPanel run = new JPanel();
+        WindowState menu = new WindowState(STATE.MENU);
+        WindowState options = new WindowState(STATE.OPTIONS);
+        WindowState calc = new WindowState(STATE.CALC);
         panels.add(menu);
         panels.add(options);
-        panels.add(run);
+        panels.add(calc);
 
         // Add the necessary objects to panels
-        for (JPanel panel : panels) {
-            addComponents(panel);
+        for (WindowState panel : panels) {
+            panel.addComponents();
         }
 
         // Create CardLayout and add panels to it
         cards = new CardLayout();
         cards.addLayoutComponent(menu, "menu");
         cards.addLayoutComponent(options, "options");
-        cards.addLayoutComponent(run , "run");
+        cards.addLayoutComponent(calc, "calc");
     }
 
     /**
@@ -89,12 +87,6 @@ public class Main {
      */
     private static void show(Container panel, String name) {
         cards.show(panel, name);
-    }
-
-    private static void addComponents(JPanel panel) {
-//        switch (panel) {
-//          TODO finish this
-//        }
     }
 
 }

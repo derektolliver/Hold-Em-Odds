@@ -25,34 +25,10 @@ public class WindowState extends JPanel {
     }
 
     /**
-     * Changes the state of the JPanel to alter display
-     * @param state is the new state being sent to the panel
+     * Adds the specific parts of a panel
      */
-    public void changeState(STATE state) {
-        this.state = state;
-//        removeAll();
-//        repaint();
-//        paintComponent(getGraphics());
-    }
-
-    /**
-     * Creates new window based on changed state
-     * @param g is the Graphics component used to create display
-     * May or may not keep the switch statement instead of if
-     */
-    public void paintComponent(Graphics g) {
+    public void addComponents() {
         // TODO figure out if there is a problem with this being called twice?
-        //repaint();
-//        if (state == STATE.MENU) {
-//            System.out.println("buttons are being added");
-//            mainState();
-//        } else if (state == STATE.OPTIONS) {
-//            System.out.println("OH YEAH BABY");
-//            optionState();
-//        } else {
-//            //TODO
-//        }
-        //super.paintComponent(g); //TODO FIX THIS NOW
         switch (state) {
             case MENU:
                 state = STATE.MENU;
@@ -91,12 +67,12 @@ public class WindowState extends JPanel {
         // Add mouse listeners to buttons
         calculator.addMouseListener((new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                changeState(STATE.CALC);
+
             }
         }));
         options.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                changeState(STATE.OPTIONS);
+                // TODO Change in CardLayout
             }
         });
 
